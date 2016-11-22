@@ -32,12 +32,9 @@ function iniciar() {
 		console.log(consulta);
 
 		for (var clau in consulta) {
-			if (consulta.hasOwnProperty(clau)) {
 				response.write('parametre: ' + clau + '\n');
 				response.write('valor: ' + consulta[clau] + '\n');
-			}
 		}
-
 		response.end();
 	}
 
