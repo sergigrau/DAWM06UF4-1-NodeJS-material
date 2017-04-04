@@ -1,0 +1,23 @@
+{
+  "name": "material-uf-4-1",
+  "version": "1.0.0",
+  "description": "![alt tag](https://github.com/sergigrau/DAWM06UF4-2-AJAX-exercicis/blob/master/imatges/node.png)",
+  "main": "M10_indexMongoDB.js",
+  "dependencies": {
+    "mongodb": "^2.2.25"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergigrau/DAWM06UF4-1-NodeJS-material.git"
+  },
+  "author": "sergi.grau@fje.edu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergigrau/DAWM06UF4-1-NodeJS-material/issues"
+  },
+  "homepage": "https://github.com/sergigrau/DAWM06UF4-1-NodeJS-material#readme"
+}
