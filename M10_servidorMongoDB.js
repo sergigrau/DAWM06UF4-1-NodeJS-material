@@ -2,14 +2,15 @@
  * Servidor HTTP millorat amb Node JS. 
  * Connecta amb MongoDB i realitza diverses operacions CRUD
  * @author sergi grau, sergi.grau@fje.edu
- * @version 1.0
- * date 08.04.2016
+ * @version 2.0
+ * date 06.04.2017
  * format del document UTF-8
  *
  * CHANGELOG
  * 08.04.2016
  * - Connecta amb MongoDB i realitza diverses operacions CRUD
- *
+ * 06.04.2017
+ * - millora la sortida de les operacions realitzades amb mongodb
  * NOTES
  * ORIGEN
  * Desenvolupament Aplicacions Web. Jesuïtes el Clot
@@ -22,29 +23,21 @@ var assert = require('assert'); //utilitzem assercions
 
 var ObjectId = require('mongodb').ObjectID;
 
-
 function iniciar() {
 
-
-    var url = 'mongodb://localhost:27017/daw2';
-    MongoClient.connect(url, function (err, db) {
+    var ruta = 'mongodb://localhost:27017/daw2';
+    MongoClient.connect(ruta, function (err, db) {
         assert.equal(null, err);
         console.log("Connexió correcta");
 
-        afegirDocuments(db, err, function () {});
-
-        consultarDocumentMenor40(db, err, function () {
-
-        });
-        consultarDocument(db, err, function () {
-            
-        });
-
+        afegirDocuments(db, err, function () { });
+        //consultarDocumentMenor40(db, err, function () { });
+        consultarDocument(db, err, function () { });
         esborrarTotsDocuments(db, err, function () {
             db.close();
         });
         //atenció aquestes crides són asíncrones cal tancar la connexió en la darrera
-        // Malament        db.close();
+        // Malament db.close();
 
     });
 
@@ -90,7 +83,7 @@ var consultarDocument = function (db, err, callback) {
     cursor.each(function (err, doc) {
         assert.equal(err, null);
         if (doc != null) {
-            console.dir(doc);
+            console.log(doc.nom, doc.anys);
         } else {
             callback();
         }
@@ -106,18 +99,18 @@ var consultarDocumentMenor40 = function (db, err, callback) {
     cursor.each(function (err, doc) {
         assert.equal(err, null);
         if (doc != null) {
-            console.dir(doc);
+            console.log(doc.nom, doc.anys);
         } else {
             callback();
         }
     });
 };
 
-var esborrarTotsDocuments = function(db, err, callback) {
-   db.collection('usuaris').deleteMany( {}, function(err, results) {
-      console.log(results);
-      callback();
-   });
+var esborrarTotsDocuments = function (db, err, callback) {
+    db.collection('usuaris').deleteMany({}, function (err, results) {
+        //console.log(results);
+        callback();
+    });
 }
 
 exports.iniciar = iniciar;
