@@ -38,7 +38,7 @@ function iniciar() {
         console.log("Petició per a  " + ruta + " rebuda.");
 
         if (ruta == '/inici') {
-            fs.readFile('./mongoDB.html', function (err, sortida) {
+            fs.readFile('./M11_mongoDB.html', function (err, sortida) {
                 response.writeHead(200, {
                     "Content-Type": "text/html; charset=utf-8"
                 });
